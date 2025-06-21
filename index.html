@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <!-- Font Aswesome cdn -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -15,17 +14,37 @@
     <link rel="stylesheet" href="styles/home.css" />
   </head>
   <body>
-    
-    <!--Navbar-->
+    <!-- Navbar -->
     <nav class="navbar container">
       <div class="logo">ShopHub</div>
       <div class="d-flex">
-        <i class="fa-solid fa-bag-shopping cart"></i>
-        <a href="index.html">
-          <button class="home-btn">Home</button>
-        </a>
+        <div class="toggle-switch">
+          <label class="switch-label">
+            <input type="checkbox" class="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="cart-icon-wrapper">
+          <i class="fa-solid fa-bag-shopping cart"></i>
+          <span class="cart-count">0</span>
+        </div>
       </div>
     </nav>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="close-cart">&times;</button>
+      </div>
+      <div class="cart-items">
+        <h2 class="empty-cart">Your cart is empty</h2>
+      </div>
+      <div class="cart-footer">
+        <button class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+    <div class="cart-overlay"></div>
 
     <!--Hero_Section-->
     <div class="hero">
@@ -45,12 +64,13 @@
     <!--Products-->
 
     <div class="featured-products container">
-      <div class="d-flex">
+      <div class="d-flex input-container">
         <input
           type="text"
           class="search-products"
           placeholder="Search products..."
         />
+        <i class="fa-solid fa-list hide"></i>
         <select name="" id="" class="search-categories">
           <option value="" disabled selected>All Categories</option>
         </select>
