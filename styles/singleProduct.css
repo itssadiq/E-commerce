@@ -16,7 +16,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-
 /*Utility Classes*/
 
 .d-flex {
@@ -76,7 +75,7 @@ a {
   font-size: 1.5em;
   color: var(--primary-color);
 }
-
+/* Navbar End */
 /*Main */
 .main {
   display: flex;
@@ -187,6 +186,10 @@ li {
   background-color: var(--hover-color);
 }
 
+/* Main End */
+
+/* Customer Reviews Section start */
+
 .customer-reviews {
   font-size: 1.2em;
   width: 80%;
@@ -211,3 +214,5 @@ li {
 .reviewer-name {
   color: var(--primary-color);
 }
+
+/* Customer Reviews Section End */
