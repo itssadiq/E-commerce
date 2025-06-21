@@ -12,7 +12,6 @@
   --secondary-color: #656d7b;
 }
 
-
 body,
 input,
 select,
@@ -23,7 +22,6 @@ button {
 /*Utility Classes*/
 .container {
   padding: 0px 10%;
-
 }
 
 .d-flex {
@@ -83,6 +81,8 @@ a {
   color: var(--primary-color);
 }
 
+/* Navbar End */
+
 .hero {
   height: 50vh;
   display: flex;
@@ -93,11 +93,13 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-image:
-    linear-gradient(to right, rgba(43, 88, 212, 0.8), rgba(131, 36, 179, 0.8)),
-    url('/assets/background.png');
+  background-image: linear-gradient(
+      to right,
+      rgba(43, 88, 212, 0.8),
+      rgba(131, 36, 179, 0.8)
+    ),
+    url("/assets/background.png");
 }
-/*Navbar-Ends*/
 .hero-content h1 {
   font-size: 3em;
   font-weight: 600;
