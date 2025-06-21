@@ -4,9 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="styles/home.css" />
   </head>
   <body>
+    
+    <!--Navbar-->
+    <nav class="navbar container">
+      <div class="logo">ShopHub</div>
+      <div class="d-flex">
+        <i class="fa-solid fa-bag-shopping cart"></i>
+        <a href="index.html">
+          <button class="home-btn">Home</button>
+        </a>
+      </div>
+    </nav>
+
+    <!--Hero_Section-->
+    <div class="hero">
+      <div class="hero-content container">
+        <h1>Summer Sale</h1>
+        <p>
+          Discover amazing deals on premium products. Up to 50% off on selected
+          items!
+        </p>
+        <div class="d-flex btn-container">
+          <button class="shop-btn">Shop Now</button>
+          <button class="learn-btn">Learn More</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Products-->
+
+    <div class="featured-products container">
+      <div class="d-flex">
+        <input
+          type="text"
+          class="search-products"
+          placeholder="Search products..."
+        />
+        <select name="" id="" class="search-categories">
+          <option value="" disabled selected>All Categories</option>
+        </select>
+      </div>
+    </div>
+
     <script src="scripts/home.js" type="module"></script>
+    <script src="scripts/utils.js" type="module"></script>
   </body>
 </html>
