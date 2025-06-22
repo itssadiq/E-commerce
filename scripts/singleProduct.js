@@ -17,17 +17,17 @@ function generateProduct() {
           <img
             src="${singleProduct.images[0].img}"
             alt=""
-            class="secondary-image1"
+            class="secondary-image1 all-images active-image"
           />
           <img
             src="${singleProduct.images[0].img1}"
             alt=""
-            class="secondary-image2"
+            class="secondary-image2 all-images"
           />
           <img
             src="${singleProduct.images[0].img2}"
             alt=""
-            class="secondary-image3"
+            class="secondary-image3 all-images"
           />
         </div>
       </div>
@@ -97,3 +97,19 @@ function stockColor() {
     stock.classList.add("out-of-stock");
   }
 }
+//TODO sadiq bhai Prevent Redirecting When Clicking On Add To Cart Btn
+function switchImage() {
+  const coverImage = document.querySelector(".main-image1");
+  const allImages = document.querySelectorAll(".all-images");
+
+  allImages.forEach((product) => {
+    product.addEventListener("click", () => {
+      allImages.forEach((img) => img.classList.remove("active-image"));
+
+      coverImage.src = product.src;
+      product.classList.add("active-image");
+    });
+  });
+}
+
+switchImage();

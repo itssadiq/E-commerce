@@ -29,6 +29,7 @@ a {
 }
 
 .secondary-images {
+  cursor: pointer;
   width: 100%;
   display: flex;
   gap: 10px;
@@ -237,4 +238,8 @@ li {
 
 .out-of-stock {
   color: #de4a4a !important;
+}
+
+.active-image {
+  border: 2px solid var(--hover-color);
 }

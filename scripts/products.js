@@ -4,9 +4,9 @@ export function products() {
       id: 0,
       images: [
         {
-          img: "assets/products/singleproduct1.jpg",
-          img1: "assets/products/smart-fitness-watch.jpeg",
-          img2: "assets/products/smart-fitness-watch.jpeg",
+          img: "assets/products/headphone-1.jpg",
+          img1: "assets/products/headphone-2.jpg",
+          img2: "assets/products/headphone-3.jpg",
         },
       ],
       name: "Premium Wireless HeadPhones",
@@ -32,9 +32,9 @@ export function products() {
       id: 1,
       images: [
         {
-          img: "assets/products/organic-cotton-t-shirt.jpeg",
-          img1: "assets/products/smart-fitness-watch.jpeg",
-          img2: "assets/products/smart-fitness-watch.jpeg",
+          img: "assets/products/t-shirt-1.jpg",
+          img1: "assets/products/t-shirt-2.jpg",
+          img2: "assets/products/t-shirt-3.jpg",
         },
       ],
       name: "Organic Cotton T-shirt",
@@ -60,9 +60,9 @@ export function products() {
       id: 2,
       images: [
         {
-          img: "assets/products/bluetooth-speaker.jpeg",
-          img1: "assets/products/smart-fitness-watch.jpeg",
-          img2: "assets/products/smart-fitness-watch.jpeg",
+          img: "assets/products/bluetooth-speaker-1.jpg",
+          img1: "assets/products/bluetooth-speaker-2.jpg",
+          img2: "assets/products/bluetooth-speaker-3.jpg",
         },
       ],
       name: "Bluetooth Speaker",
@@ -88,9 +88,9 @@ export function products() {
       id: 3,
       images: [
         {
-          img: "assets/products/leather-cossbody-bag.jpeg",
-          img1: "assets/products/smart-fitness-watch.jpeg",
-          img2: "assets/products/smart-fitness-watch.jpeg",
+          img: "assets/products/leather-cossbody-bag-1.jpg",
+          img1: "assets/products/leather-cossbody-bag-2.jpg",
+          img2: "assets/products/leather-cossbody-bag-3.jpg",
         },
       ],
       name: "Leather Corssbody Bag",
@@ -115,9 +115,9 @@ export function products() {
       id: 4,
       images: [
         {
-          img: "assets/products/smart-fitness-watch.jpeg",
-          img1: "assets/products/smart-fitness-watch.jpeg",
-          img2: "assets/products/smart-fitness-watch.jpeg",
+          img: "assets/products/smart-fitness-watch-1.jpg",
+          img1: "assets/products/smart-fitness-watch-2.jpg",
+          img2: "assets/products/smart-fitness-watch-3.jpg",
         },
       ],
       name: "Smart Fitness Watch",
@@ -142,5 +142,3 @@ export function products() {
   ];
   return productData;
 }
-
-//TODO Prevent Redirecting When Clicking On Add To Cart Btn
