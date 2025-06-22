@@ -204,6 +204,12 @@
   gap: 10px;
 }
 
+.d-flex-products div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
 .gap-5 {
   gap: 5px;
 }
