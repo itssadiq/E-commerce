@@ -7,6 +7,7 @@
 }
 
 :root.darkmode {
+  --box-shadow: rgba(200, 200, 200, 0.073);
   --primary-color: #5884e3;
   --hover-color: #1c3695;
   --bg-color: #0b1320;
@@ -19,6 +20,7 @@
   --hover-color: #10388f;
   --bg-color: #fff;
   --text-color: #000;
+  --box-shadow: rgba(0, 0, 0, 0.126);
   --secondary-color: #656d7b;
 }
 
@@ -307,7 +309,6 @@ a {
 
 /* Navbar End */
 /*Footer*/
-/* FIXME: Fix footer text color */
 .footer {
   border-top: 1px solid var(--text-color);
   background-color: #0b1320;
