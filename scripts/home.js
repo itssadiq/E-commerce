@@ -3,9 +3,9 @@ import { products } from "./products.js";
 generateProducts();
 
 generateSingleProductPageDetails();
+
 function generateProducts() {
   const productData = products();
-
   let productHtml = "";
   const allProducts = document.querySelector(".products");
   for (let i = 0; i < productData.length; i++) {
@@ -161,5 +161,4 @@ function searchProducts() {
     });
   });
 }
-
 searchProducts();
