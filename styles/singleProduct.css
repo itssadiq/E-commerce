@@ -139,6 +139,8 @@ li {
 }
 
 .status ul li {
+  font-size: 1.05em;
+  font-weight: 600;
   color: #05c954;
 }
 
@@ -225,4 +227,14 @@ li {
   .add-to-cart {
     width: 60%;
   }
+}
+
+
+/*Stock Colors*/
+.limited-stock {
+  color: #d6c619 !important;
+}
+
+.out-of-stock {
+  color: #de4a4a !important;
 }

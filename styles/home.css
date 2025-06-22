@@ -9,11 +9,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(
-      to right,
+  background-image: linear-gradient(to right,
       rgba(43, 88, 212, 0.8),
-      rgba(131, 36, 179, 0.8)
-    ),
+      rgba(131, 36, 179, 0.8)),
     url("../assets/background.png");
 }
 
@@ -111,15 +109,11 @@
     border-radius: 5px;
   }
 
-  .search-categories {
-    display: none;
+  .input-container {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .fa-list {
-    padding: 8px 10px;
-    border: 1px solid #0000003c;
-    display: block;
-  }
 }
 
 /*Featured Products Ends*/
@@ -270,4 +264,80 @@
   .product-price {
     font-size: 1.1em;
   }
+}
+
+.hide-result {
+  display: none !important;
+}
+
+.no-results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.no-results-icon {
+  font-size: 72px;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.no-results-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 15px;
+}
+
+.no-results-query {
+  font-weight: bold;
+  color: #dc3545;
+  font-style: italic;
+}
+
+.no-results-message {
+  font-size: 18px;
+  color: #495057;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.no-results-suggestions {
+  text-align: left;
+  margin-bottom: 30px;
+  color: #6c757d;
+}
+
+.no-results-suggestions ul {
+  padding-left: 20px;
+}
+
+.no-results-suggestions li {
+  margin-bottom: 8px;
+}
+
+.action-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
 }

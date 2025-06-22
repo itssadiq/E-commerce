@@ -71,13 +71,20 @@
           class="search-products"
           placeholder="Search products..."
         />
-        <i class="fa-solid fa-list hide"></i>
         <select name="" id="" class="search-categories">
-          <option value="" disabled selected>All Categories</option>
+          <option value="All" selected>All Categories</option>
         </select>
       </div>
       <!--All-Products-->
       <div class="products"></div>
+      <div class="no-results-container hide-result">
+        <div class="no-results-icon"><i class="fas fa-search"></i></div>
+        <h1 class="no-results-title">No Results Found</h1>
+        <p class="no-results-message">
+          Your search for "<span class="no-results-query"></span>" didn't match
+          any results.
+        </p>
+      </div>
     </div>
 
     <!--Footer-->

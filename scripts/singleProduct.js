@@ -1,6 +1,7 @@
 const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
 
 generateProduct();
+stockColor();
 
 function generateProduct() {
   const html = `
@@ -78,7 +79,7 @@ function generateProduct() {
 
         <div class="status">
           <ul>
-            <li>${singleProduct.stock}</li>
+            <li class="stock">${singleProduct.stock}</li>
           </ul>
         </div>
       </div>
@@ -87,4 +88,12 @@ function generateProduct() {
   document.querySelector(".main").innerHTML = html;
 }
 
-// TODO: task for talha change colors according to stock status
+function stockColor() {
+  const stock = document.querySelector(".stock");
+
+  if (stock.innerHTML === "Limited Stock") {
+    stock.classList.add("limited-stock");
+  } else if (stock.innerHTML === "Out of Stock") {
+    stock.classList.add("out-of-stock");
+  }
+}
