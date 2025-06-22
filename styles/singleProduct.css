@@ -8,14 +8,16 @@
 
 
 :root.darkmode {
+  --box-shadow: rgba(200, 200, 200, 0.073);
   --primary-color: #5884e3;
   --hover-color: #1c3695;
-  --bg-color: #141414;
+  --bg-color: #0B1320;
   --text-color: #fffdfd;
   --secondary-color: #ffffff;
 }
 
 :root {
+  --box-shadow: rgba(0, 0, 0, 0.126);
   --primary-color: #155dfc;
   --hover-color: #10388f;
   --bg-color: #fff;
@@ -26,7 +28,13 @@
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
+  transition: 0.3s all ease;
   font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
 }
 
 /*Utility Classes*/
@@ -268,7 +276,6 @@ a {
 
 .checkout-btn {
   font-family: "Poppins", sans-serif;
-
   width: 100%;
   padding: 12px;
   background-color: var(--primary-color);
@@ -429,6 +436,7 @@ li {
   font-weight: bold;
   font-size: 1rem;
   border-radius: 5px;
+  transition: 0.3s all eas;
   cursor: pointer;
 }
 
@@ -446,11 +454,15 @@ li {
   margin: 50px auto;
 }
 
+.customer-reviews h3 {
+  font-size: 1.2em;
+}
+
 .review-block {
   margin-top: 25px;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.126);
+  box-shadow: 1px 1px 20px var(--box-shadow);
 }
 
 .rating {
@@ -521,4 +533,71 @@ li {
   .add-to-cart {
     width: 60%;
   }
+}
+
+
+
+/*Footer*/
+
+.footer {
+  border-top: 1px solid var(--text-color);
+  background-color: #0B1320;
+  color: white;
+  padding: 40px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  border-bottom: 1px solid #4b5563;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+}
+
+.footer-column h2.logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-column h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.footer-column p,
+.footer-column ul {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 6px;
+}
+
+.footer-column ul li a {
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #6b7280;
+  font-size: 13px;
+  margin-top: 20px;
 }

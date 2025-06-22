@@ -19,8 +19,6 @@ function darkmode() {
   });
 }
 
-darkmode();
-
 function cartToggle() {
   const cartIcon = document.querySelector(".cart-icon-wrapper");
   const cartSidebar = document.querySelector(".cart-sidebar");
@@ -55,4 +53,5 @@ function cartToggle() {
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", navScroll);
   cartToggle();
+  darkmode();
 });
