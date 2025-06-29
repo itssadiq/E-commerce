@@ -97,7 +97,7 @@ function stockColor() {
     stock.classList.add("out-of-stock");
   }
 }
-//TODO sadiq bhai Prevent Redirecting When Clicking On Add To Cart Btn
+
 function switchImage() {
   const coverImage = document.querySelector(".main-image1");
   const allImages = document.querySelectorAll(".all-images");

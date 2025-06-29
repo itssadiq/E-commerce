@@ -1,5 +1,4 @@
-export function products() {
-  const productData = [
+  export const productData = [
     {
       id: 0,
       images: [
@@ -140,5 +139,4 @@ export function products() {
       ],
     },
   ];
-  return productData;
-}
+ 
