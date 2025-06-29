@@ -1,12 +1,11 @@
 import { productData } from "./products.js";
-import { addToCart, saveToStorage, updateQuantity, cart } from "./cart.js";
-
+import { addToCart, saveToStorage, cart } from "./cart.js";
+import { updateCartCount, renderCart } from "./utils.js";
 generateProducts();
 generateSingleProductPageDetails();
 
-
 let cartQuantity;
-  const allCartBtns = document.querySelectorAll(".add-to-cart");
+const allCartBtns = document.querySelectorAll(".add-to-cart");
 
 function generateProducts() {
   let productHtml = "";
@@ -170,6 +169,15 @@ function searchProducts() {
 searchProducts();
 
 //Cart Related Functions
-addToCart(cartQuantity);
-saveToStorage(cart);
-updateQuantity(cartQuantity);
+updateCartCount();
+
+allCartBtns.forEach((addBtn, index) => {
+  addBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(cartQuantity, index);
+    updateCartCount();
+    renderCart();
+    saveToStorage(cart);
+  });
+});
