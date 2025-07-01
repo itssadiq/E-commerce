@@ -6,6 +6,24 @@ function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+function getTotalCartQuantity() {
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+
+  return totalQuantity;
+}
+
+const totalQuantity = getTotalCartQuantity();
+
+const heading = document.querySelector(".cart-heading");
+
+if (heading) {
+  heading.innerHTML = `Shoppig Cart (${totalQuantity} items)`;
+}
+
 export function addToCart(productId) {
   let matchingProduct;
 
@@ -32,6 +50,7 @@ function renderCartItems() {
 
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
+
     let quantity = 0;
 
     const matchingProduct = getProduct(productId);
@@ -50,7 +69,7 @@ function renderCartItems() {
               />
               <div class="name-price">
               <h4>${matchingProduct.name}</h4>
-              <p class="price">${matchingProduct.price}</p>
+              <p class="price">Rs ${matchingProduct.price}</p>
               <p class="quantity">Quantity: ${quantity}</p>
               </div>
               </div>
@@ -60,7 +79,9 @@ function renderCartItems() {
             <span class="save-quantity">Save</span>
 
             <i class="fa-solid fa-trash"></i>
-            <p class="calculated-price">Rs 499</p>
+            <p class="calculated-price">Rs ${
+              matchingProduct.price * quantity
+            }</p>
           </div>
         </div>
     `;
