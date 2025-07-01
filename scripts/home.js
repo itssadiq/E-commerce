@@ -4,7 +4,7 @@ import { updateCartCount, renderCart, showAlert } from "./utils.js";
 generateProducts();
 generateSingleProductPageDetails();
 
-let cartQuantity;
+let cartQuantity = 0;
 const allCartBtns = document.querySelectorAll(".add-to-cart");
 
 function generateProducts() {

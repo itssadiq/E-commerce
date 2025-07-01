@@ -81,6 +81,12 @@ export function renderCart() {
   </div>`;
   });
   cartContainer.innerHTML = cartHtml;
+  if (cartContainer.innerHTML === "") {
+    const emptyCart = document.createElement(`h2`);
+    emptyCart.className = "empty-cart";
+    emptyCart.textContent = "Your Cart Is Empty";
+    cartContainer.appendChild(emptyCart);
+  }
   deleteCart();
 }
 
