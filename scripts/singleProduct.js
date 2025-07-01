@@ -1,6 +1,7 @@
 import { addToCart, saveToStorage, cart } from "./cart.js";
 import { updateCartCount, renderCart, showAlert } from "./utils.js";
 const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
+//TODO Make Quantity Selector Interactive Sadiq
 generateProduct();
 
 stockColor();
@@ -125,7 +126,7 @@ const cartBtn = document.querySelector(".add-to-cart");
 cartBtn.addEventListener("click", () => {
   addToCart(cartQuantity);
   updateCartCount();
-  // showAlert();
+  showAlert();
   renderCart();
   saveToStorage(cart);  
 });

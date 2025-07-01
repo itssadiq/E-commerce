@@ -1,6 +1,10 @@
 //Update Cart Quantity
-import { productData } from "./products.js";
 
+import { productData } from "./products.js";
+// import { updateCartCount } from "./utils.js";
+//FIXME Rewamp This Cart Array Sadiq
+
+//TODO Make Update And Delete Buttons Interactive Sadiq
 export const cart = JSON.parse(localStorage.getItem("cart")) || [];
 let totalQuantity = 0;
 
@@ -13,21 +17,28 @@ const headingEl = document.querySelector(".cart-heading");
 if (headingEl) {
   headingEl.innerHTML = `Shopping Cart(${totalQuantity} items)`;
 }
-
+// updateCartCount();
 renderCartSummary();
 renderPaymentSummary();
 
 //Add To Cart
 
+//TODO Before Adding To Cart Check Stock Availablity And Show Relevant Alerts Talha
+
+//TODO Rewamp This Add To Cart Sadiq
+
 export function addToCart(cartQuantity, index) {
   let product;
 
-  if (window.location.pathname.endsWith("/index.html")) {
+  if (
+    window.location.pathname.endsWith("/index.html") ||
+    window.location.pathname.endsWith("/")
+  ) {
     product = productData[index];
   } else if (window.location.pathname.endsWith("/singleProduct.html")) {
     product = JSON.parse(localStorage.getItem("singleProduct"));
   } else {
-    return; // Page not supported
+    return;
   }
 
   let existingItem = undefined;
@@ -47,7 +58,6 @@ export function addToCart(cartQuantity, index) {
 
   saveToStorage(cart);
 }
-
 //Save To Local Storage
 export function saveToStorage(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -58,13 +68,13 @@ function renderCartSummary() {
 
   cart.forEach((cartItem) => {
     const html = `
-      <div class="cart-item">
-          <div class="image-name">
-            <img
-              src="${cartItem.images[0].img}"
-              alt=""
-              class="product-image"
-            />
+      <div class="cart-page-item">
+      <div class="image-name">
+      <img
+      src="${cartItem.images[0].img}"
+      alt=""
+      class="product-image"
+      />
             <div class="name-price">
               <h4>${cartItem.name}</h4>
               <p class="price">Rs ${cartItem.price}</p>
@@ -75,13 +85,13 @@ function renderCartSummary() {
             <span class="update-quantity">Update</span>
             <input type="text" class="quantity-input" />
             <span class="save-quantity">Save</span>
-
+            
             <i class="fa-solid fa-trash"></i>
             <p class="calculated-price">Rs ${
               cartItem.price * cartItem.quantity
             }</p>
-          </div>
-        </div>
+            </div>
+            </div>
     `;
 
     cartItemsHTML += html;
@@ -107,27 +117,27 @@ function renderPaymentSummary() {
     <h3>Order Summary</h3>
         <div class="payment-summary">
           <div class="payment-summary-row">
-            <div class="payment-summary-title">Items(${totalQuantity}):</div>
-            <div class="payment-summary-money">Rs ${price}</div>
+          <div class="payment-summary-title">Items(${totalQuantity}):</div>
+          <div class="payment-summary-money">Rs ${price}</div>
           </div>
-
+          
           <div class="payment-summary-row">
-            <div class="payment-summary-title">Shipping & handling:</div>
-            <div class="payment-summary-money">Rs 100</div>
+          <div class="payment-summary-title">Shipping & handling:</div>
+          <div class="payment-summary-money">Rs 100</div>
           </div>
-
+          
           <div class="payment-summary-row">
-            <div class="payment-summary-title">Estimated Tax:</div>
+          <div class="payment-summary-title">Estimated Tax:</div>
             <div class="payment-summary-money">Rs 50</div>
-          </div>
-        </div>
-        <div class="payment-summary-row order-total">
-          <div class="payment-summary-title"><h3>Total</h3></div>
-          <div class="payment-summary-money total-money"><h3>Rs ${
-            price + 150
-          }</h3></div>
-        </div>
-  `;
+            </div>
+            </div>
+            <div class="payment-summary-row order-total">
+            <div class="payment-summary-title"><h3>Total</h3></div>
+            <div class="payment-summary-money total-money"><h3>Rs ${
+              price + 150
+            }</h3></div>
+            </div>
+            `;
 
   const cartSummaryEl = document.querySelector(".cart-summary");
 
@@ -135,3 +145,6 @@ function renderPaymentSummary() {
     cartSummaryEl.innerHTML = html;
   }
 }
+
+// updateCartCount();
+// renderCart();

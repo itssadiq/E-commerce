@@ -239,8 +239,8 @@ a {
 }
 
 .cart-header {
-  padding: 20px;
   display: flex;
+  padding: 20px;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eee;
@@ -256,8 +256,8 @@ a {
 }
 
 .close-cart {
-  background: none;
-  border: none;
+  background: none !important; 
+  border: none !important;
   font-size: 1.8em;
   cursor: pointer;
   color: #656d7b !important;
