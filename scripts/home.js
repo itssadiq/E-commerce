@@ -40,7 +40,7 @@ function generateProducts() {
                 productData[i].category
               }</</button>
             </div>
-            <button class="add-to-cart">Add To Cart</button>
+            <button class="add-to-cart" data-index = "${i}">Add To Cart</button>
           </div>
         </div>`;
   }
@@ -100,42 +100,44 @@ function showCategory() {
         categoryBtn.value === "All" ||
         categoryBtn.value === product.category
       ) {
-        html += `<div class="product-card" data-index = "${i}">
+        html += `<div class="product-card" data-index = "${index}">
           <img class="product-img" src="${
-            productData[i].images[0].img
+            productData[index].images[0].img
           }" alt="" />
           <div class="product-content">
-            <h2 class="product-name">${productData[i].name}</h2>
+            <h2 class="product-name">${productData[index].name}</h2>
             <div class="d-flex gap-5">
               <img
                 class="product-rating"
-                src="${productData[i].rating}"
+                src="${productData[index].rating}"
                 alt=""
               />
               <p class="product-rating-count">(${
-                productData[i].ratingCount
+                productData[index].ratingCount
               })</p>
             </div>
             <div class="d-flex-products">
             <div>
               <h3 class="product-price">${
-                productData[i].currency + productData[i].price
+                productData[index].currency + productData[index].price
               }</h3>
               <span class="old-price">${
-                productData[i].currency + productData[i].oldPrice
+                productData[index].currency + productData[index].oldPrice
               }</span>
               </div>
               <button class="product-category">${
-                productData[i].category
+                productData[index].category
               }</</button>
             </div>
-            <button class="add-to-cart">Add To Cart</button>
+            <button class="add-to-cart" data-index = "${index}">Add To Cart</button>
           </div>
         </div>`;
       }
       allProducts.innerHTML = html;
     });
     searchProducts();
+    generateSingleProductPageDetails();
+    attachAddToCart();
   });
 }
 showCategory();
@@ -164,6 +166,8 @@ function searchProducts() {
       }
     });
   });
+
+  generateSingleProductPageDetails();
 }
 
 searchProducts();

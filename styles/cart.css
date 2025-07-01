@@ -1,9 +1,6 @@
 .cart-heading {
   width: 80%;
   margin: 0 auto;
-}
-
-.cart-heading {
   margin-top: 30px;
 }
 
@@ -14,7 +11,7 @@
   align-items: start;
 }
 
-.cart-items {
+.main-cart-items {
   width: 70%;
 }
 
@@ -25,6 +22,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: 5px;
+  margin-top: 15px;
 }
 
 .image-name {
@@ -36,6 +34,28 @@
 .price {
   color: #155dfc;
   font-weight: bold;
+}
+
+.update-quantity {
+  color: #155dfc;
+  cursor: pointer;
+}
+.save-quantity {
+  display: none;
+  color: #155dfc;
+  cursor: pointer;
+}
+
+.update-quantity:hover {
+  color: #00760f;
+}
+.save-quantity:hover {
+  color: #00760f;
+}
+
+.quantity-input {
+  display: none;
+  width: 40px;
 }
 
 .calculated-price {
@@ -56,6 +76,7 @@
   width: 70px;
   height: 70px;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 .quantity-selector select {
@@ -121,6 +142,101 @@ form button {
   background-color: #155dfc;
   color: white;
   border: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .cart-heading {
+    width: 90%;
+    font-size: 1.2em;
+  }
+
+  .main {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .main-cart-items {
+    width: 100%;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .cart-item-handles {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .quantity-selector select {
+    width: 100px;
+    font-size: 0.9rem;
+  }
+
+  .product-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cart-summary {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .form-wrapper {
+    width: 90%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form input,
+  form button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-heading {
+    font-size: 1em;
+  }
+
+  .cart-item {
+    padding: 10px;
+  }
+
+  .product-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .quantity-selector select {
+    width: 80px;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .cart-item-handles {
+    gap: 10px;
+  }
+
+  .cart-summary {
+    padding: 10px;
+  }
+
+  .payment-summary-row {
+    font-size: 0.9rem;
+  }
+
+  form input,
+  form button {
+    padding: 6px;
+    font-size: 0.85rem;
+  }
 }
 
 .hide {
