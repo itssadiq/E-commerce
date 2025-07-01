@@ -1,5 +1,6 @@
 import { products } from "./products.js";
 import { cart, addToCart } from "./cart.js";
+import { updateCartIcon } from "./utils.js";
 
 generateProducts();
 
@@ -183,6 +184,8 @@ function attachAddToCart() {
       const productId = product.id;
 
       addToCart(productId);
+
+      updateCartIcon();
     });
   });
 }

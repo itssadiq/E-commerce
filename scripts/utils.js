@@ -1,3 +1,5 @@
+import { cart } from "./cart.js";
+
 function navScroll() {
   const navBar = document.querySelector(".navbar");
   if (window.scrollY > 100) {
@@ -55,3 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
   cartToggle();
   darkmode();
 });
+
+export function updateCartIcon() {
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+
+  const cartCount = document.querySelector(".cart-count");
+
+  cartCount.innerHTML = totalQuantity;
+}
+
+updateCartIcon();

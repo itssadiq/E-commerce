@@ -15,13 +15,11 @@ export function addToCart(productId) {
 
   if (matchingProduct) {
     matchingProduct.quantity += 1;
-    console.log("quantity updated");
   } else {
     cart.push({
       productId,
       quantity: 1,
     });
-    console.log("product added to cart");
   }
 
   saveToStorage();
