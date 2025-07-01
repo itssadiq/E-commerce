@@ -238,3 +238,7 @@ form button {
     font-size: 0.85rem;
   }
 }
+
+.hide {
+  display: none;
+}

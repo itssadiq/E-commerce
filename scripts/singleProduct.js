@@ -1,7 +1,13 @@
+import { addToCart, saveToStorage, cart } from "./cart.js";
+import { updateCartCount, renderCart, showAlert } from "./utils.js";
 const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
-
 generateProduct();
+
 stockColor();
+
+updateCartCount();
+renderCart();
+let cartQuantity = 0;
 
 function generateProduct() {
   const html = `
@@ -97,7 +103,7 @@ function stockColor() {
     stock.classList.add("out-of-stock");
   }
 }
-//TODO sadiq bhai Prevent Redirecting When Clicking On Add To Cart Btn
+
 function switchImage() {
   const coverImage = document.querySelector(".main-image1");
   const allImages = document.querySelectorAll(".all-images");
@@ -113,3 +119,13 @@ function switchImage() {
 }
 
 switchImage();
+
+const cartBtn = document.querySelector(".add-to-cart");
+
+cartBtn.addEventListener("click", () => {
+  addToCart(cartQuantity);
+  updateCartCount();
+  // showAlert();
+  renderCart();
+  saveToStorage(cart);  
+});

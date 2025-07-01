@@ -1,4 +1,4 @@
-import { cart } from "./cart.js";
+import { cart, saveToStorage } from "./cart.js";
 
 function navScroll() {
   const navBar = document.querySelector(".navbar");
@@ -52,22 +52,75 @@ function cartToggle() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  window.addEventListener("scroll", navScroll);
-  cartToggle();
-  darkmode();
-});
-
-export function updateCartIcon() {
-  let totalQuantity = 0;
-
-  cart.forEach((cartItem) => {
-    totalQuantity += cartItem.quantity;
+export function updateCartCount() {
+  const cartQuantityElement = document.querySelector(".cart-count");
+  let cartCount = 0;
+  cart.forEach((q) => {
+    cartCount += q.quantity;
   });
 
-  const cartCount = document.querySelector(".cart-count");
-
-  cartCount.innerHTML = totalQuantity;
+  cartQuantityElement.innerHTML = cartCount;
 }
 
-updateCartIcon();
+export function renderCart() {
+  const cartContainer = document.querySelector(".cart-items");
+
+  let cartHtml = "";
+  cart.forEach((data) => {
+    cartHtml += `<div class="cart-item">
+  <img src="${data.images[0].img}" alt="" />
+  
+  <div>
+  <p class="cart-name">${data.name}</p>
+  <p class="cart-price">${data.currency + data.price}</p>
+  <div class="d-flex">
+  <span class="cart-delete">remove</span>
+  <span class="cart-quantity">${data.quantity}</span>
+  </div>
+  </div>
+  </div>`;
+  });
+  cartContainer.innerHTML = cartHtml;
+  if (cartContainer.innerHTML === "") {
+    const emptyCart = document.createElement(`h2`);
+    emptyCart.className = "empty-cart";
+    emptyCart.textContent = "Your Cart Is Empty";
+    cartContainer.appendChild(emptyCart);
+  }
+  deleteCart();
+}
+
+export function deleteCart() {
+  const deleteBtns = document.querySelectorAll(".cart-delete");
+  deleteBtns.forEach((delBtn, index) => {
+    delBtn.addEventListener("click", () => {
+      cart.splice(index, 1);
+      saveToStorage(cart);
+      renderCart();
+      updateCartCount();
+    });
+  });
+}
+export function showAlert() {
+  const modal = document.getElementById("cartModal");
+  cart.forEach(() => {
+    modal.innerHTML = ` <div class="cart-modal-content">
+    <div class="cart-modal-icon">✓</div>
+    <div class="cart-modal-text">Added To Cart</div>
+    </div>`;
+  });
+  modal.classList.remove("show");
+
+  void modal.offsetWidth;
+
+  modal.classList.add("show");
+
+  setTimeout(() => {
+    modal.classList.remove("show");
+  }, 1000);
+}
+
+window.addEventListener("scroll", navScroll);
+renderCart();
+cartToggle();
+darkmode();
