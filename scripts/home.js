@@ -93,7 +93,7 @@ function showCategory() {
   categoryBtn.addEventListener("change", () => {
     let html = "";
 
-    productData.forEach((product, i) => {
+    productData.forEach((product, index) => {
       noResult.classList.remove("show-result");
       searchInput.value = "";
       if (
@@ -137,7 +137,6 @@ function showCategory() {
     });
     searchProducts();
     generateSingleProductPageDetails();
-    attachAddToCart();
   });
 }
 showCategory();
@@ -179,7 +178,13 @@ allCartBtns.forEach((addBtn, index) => {
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(cartQuantity, index);
+    const index = addBtn.dataset.index;
+
+    const product = productData[index];
+
+    const productId = product.id;
+
+    addToCart(productId);
     updateCartCount();
     showAlert();
     renderCart();
