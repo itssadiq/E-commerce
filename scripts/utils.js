@@ -28,30 +28,31 @@ function cartToggle() {
   const closeCart = document.querySelector(".close-cart");
 
   // Toggle cart sidebar
-  cartIcon.addEventListener("click", function () {
-    cartSidebar.classList.add("active");
-    cartOverlay.classList.add("active");
-    document.body.style.overflow = "hidden"; // Prevent scrolling when cart is open
-  });
+  if (cartIcon) {
+    cartIcon.addEventListener("click", function () {
+      cartSidebar.classList.add("active");
+      cartOverlay.classList.add("active");
+      document.body.style.overflow = "hidden"; // Prevent scrolling when cart is open
+    });
 
-  // Close cart sidebar
-  function closeCartSidebar() {
-    cartSidebar.classList.remove("active");
-    cartOverlay.classList.remove("active");
-    document.body.style.overflow = ""; // Restore scrolling
-  }
-
-  closeCart.addEventListener("click", closeCartSidebar);
-  cartOverlay.addEventListener("click", closeCartSidebar);
-
-  // Close cart when pressing Escape key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      closeCartSidebar();
+    // Close cart sidebar
+    function closeCartSidebar() {
+      cartSidebar.classList.remove("active");
+      cartOverlay.classList.remove("active");
+      document.body.style.overflow = ""; // Restore scrolling
     }
-  });
-}
 
+    closeCart.addEventListener("click", closeCartSidebar);
+    cartOverlay.addEventListener("click", closeCartSidebar);
+
+    // Close cart when pressing Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeCartSidebar();
+      }
+    });
+  }
+}
 export function updateCartCount() {
   const cartQuantityElement = document.querySelector(".cart-count");
   let cartCount = 0;
@@ -80,14 +81,16 @@ export function renderCart() {
   </div>
   </div>`;
   });
-  cartContainer.innerHTML = cartHtml;
-  if (cartContainer.innerHTML === "") {
-    const emptyCart = document.createElement(`h2`);
-    emptyCart.className = "empty-cart";
-    emptyCart.textContent = "Your Cart Is Empty";
-    cartContainer.appendChild(emptyCart);
+  if (cartContainer) {
+    cartContainer.innerHTML = cartHtml;
+    if (cartContainer.innerHTML === "") {
+      const emptyCart = document.createElement(`h2`);
+      emptyCart.className = "empty-cart";
+      emptyCart.textContent = "Your Cart Is Empty";
+      cartContainer.appendChild(emptyCart);
+    }
+    deleteCart();
   }
-  deleteCart();
 }
 
 export function deleteCart() {
