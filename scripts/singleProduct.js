@@ -1,12 +1,13 @@
-import { updateCartCount, renderCart } from "./utils.js";
 import { addToCart, saveToStorage, cart } from "./cart.js";
-
+import { updateCartCount, renderCart, showAlert } from "./utils.js";
 const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
 generateProduct();
+
 stockColor();
 
 updateCartCount();
 renderCart();
+let cartQuantity = 0;
 
 function generateProduct() {
   const html = `
@@ -118,3 +119,13 @@ function switchImage() {
 }
 
 switchImage();
+
+const cartBtn = document.querySelector(".add-to-cart");
+
+cartBtn.addEventListener("click", () => {
+  addToCart(cartQuantity);
+  updateCartCount();
+  // showAlert();
+  renderCart();
+  saveToStorage(cart);  
+});
