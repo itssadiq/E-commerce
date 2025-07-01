@@ -36,6 +36,28 @@
   font-weight: bold;
 }
 
+.update-quantity {
+  color: #155dfc;
+  cursor: pointer;
+}
+.save-quantity {
+  display: none;
+  color: #155dfc;
+  cursor: pointer;
+}
+
+.update-quantity:hover {
+  color: #00760f;
+}
+.save-quantity:hover {
+  color: #00760f;
+}
+
+.quantity-input {
+  display: none;
+  width: 40px;
+}
+
 .calculated-price {
   font-weight: bold;
 }
@@ -54,6 +76,7 @@
   width: 70px;
   height: 70px;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 .quantity-selector select {
