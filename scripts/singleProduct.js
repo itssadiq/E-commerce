@@ -1,7 +1,12 @@
-const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
+import { updateCartCount, renderCart } from "./utils.js";
+import { addToCart, saveToStorage, cart } from "./cart.js";
 
+const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
 generateProduct();
 stockColor();
+
+updateCartCount();
+renderCart();
 
 function generateProduct() {
   const html = `

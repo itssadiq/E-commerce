@@ -1,4 +1,4 @@
-import { cart } from "./cart.js";
+import { cart, saveToStorage } from "./cart.js";
 
 function navScroll() {
   const navBar = document.querySelector(".navbar");
@@ -58,6 +58,7 @@ export function updateCartCount() {
   cart.forEach((q) => {
     cartCount += q.quantity;
   });
+
   cartQuantityElement.innerHTML = cartCount;
 }
 
@@ -80,10 +81,40 @@ export function renderCart() {
   </div>`;
   });
   cartContainer.innerHTML = cartHtml;
+  deleteCart();
 }
 
-renderCart();
+export function deleteCart() {
+  const deleteBtns = document.querySelectorAll(".cart-delete");
+  deleteBtns.forEach((delBtn, index) => {
+    delBtn.addEventListener("click", () => {
+      cart.splice(index, 1);
+      saveToStorage(cart);
+      renderCart();
+      updateCartCount();
+    });
+  });
+}
+export function showAlert() {
+  const modal = document.getElementById("cartModal");
+  cart.forEach(() => {
+    modal.innerHTML = ` <div class="cart-modal-content">
+    <div class="cart-modal-icon">✓</div>
+    <div class="cart-modal-text">Added To Cart</div>
+    </div>`;
+  });
+  modal.classList.remove("show");
+
+  void modal.offsetWidth;
+
+  modal.classList.add("show");
+
+  setTimeout(() => {
+    modal.classList.remove("show");
+  }, 1000);
+}
 
 window.addEventListener("scroll", navScroll);
+renderCart();
 cartToggle();
 darkmode();

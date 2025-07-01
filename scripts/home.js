@@ -1,6 +1,6 @@
 import { productData } from "./products.js";
 import { addToCart, saveToStorage, cart } from "./cart.js";
-import { updateCartCount, renderCart } from "./utils.js";
+import { updateCartCount, renderCart, showAlert } from "./utils.js";
 generateProducts();
 generateSingleProductPageDetails();
 
@@ -177,6 +177,7 @@ allCartBtns.forEach((addBtn, index) => {
     e.stopPropagation();
     addToCart(cartQuantity, index);
     updateCartCount();
+    showAlert();
     renderCart();
     saveToStorage(cart);
   });
