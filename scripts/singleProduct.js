@@ -1,7 +1,12 @@
-const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
+import { updateCartCount, renderCart } from "./utils.js";
+import { addToCart, saveToStorage, cart } from "./cart.js";
 
+const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
 generateProduct();
 stockColor();
+
+updateCartCount();
+renderCart();
 
 function generateProduct() {
   const html = `
@@ -97,7 +102,7 @@ function stockColor() {
     stock.classList.add("out-of-stock");
   }
 }
-//TODO sadiq bhai Prevent Redirecting When Clicking On Add To Cart Btn
+
 function switchImage() {
   const coverImage = document.querySelector(".main-image1");
   const allImages = document.querySelectorAll(".all-images");

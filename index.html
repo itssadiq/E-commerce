@@ -11,8 +11,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="styles/utils.css" />
     <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" href="styles/utils.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -38,9 +38,11 @@
         <h3>Your Cart</h3>
         <button class="close-cart">&times;</button>
       </div>
+      <!--Hide This By Default-->
       <div class="cart-items">
         <h2 class="empty-cart">Your cart is empty</h2>
       </div>
+
       <div class="cart-footer">
         <a href="cart.html"><button class="checkout-btn">Checkout</button></a>
       </div>
@@ -86,13 +88,20 @@
         </p>
       </div>
     </div>
+    <!--Custom-aler-->
+    <div class="cart-modal" id="cartModal">
+      <!-- <div class="cart-modal-content">
+    <div class="cart-modal-icon">✓</div>
+    <div class="cart-modal-text"></div>
+  </div> -->
+    </div>
 
     <!--Footer-->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-column">
           <h2 class="logo">ShopHub</h2>
-          <p>
+          <p> 
             Your one-stop destination for premium products at unbeatable prices.
           </p>
         </div>

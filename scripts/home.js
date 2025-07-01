@@ -1,11 +1,13 @@
-import { products } from "./products.js";
-
+import { productData } from "./products.js";
+import { addToCart, saveToStorage, cart } from "./cart.js";
+import { updateCartCount, renderCart, showAlert } from "./utils.js";
 generateProducts();
-
 generateSingleProductPageDetails();
 
+let cartQuantity;
+const allCartBtns = document.querySelectorAll(".add-to-cart");
+
 function generateProducts() {
-  const productData = products();
   let productHtml = "";
   const allProducts = document.querySelector(".products");
   for (let i = 0; i < productData.length; i++) {
@@ -55,8 +57,6 @@ function generateSingleProductPageDetails() {
     product.addEventListener("click", () => {
       const index = product.dataset.index;
 
-      const productData = products();
-
       productData.forEach((productDetails) => {
         if (productDetails.id == index) {
           singleProduct = productDetails;
@@ -73,7 +73,6 @@ function generateSingleProductPageDetails() {
 function createCategory() {
   const searchCategoryElement = document.querySelector(".search-categories");
   let categoryHtml = "";
-  const productData = products();
   productData.forEach((product) => {
     if (!categoryHtml.includes(product.category)) {
       categoryHtml += `<option value="${product.category}">${product.category}</option>`;
@@ -85,13 +84,18 @@ function createCategory() {
 createCategory();
 
 function showCategory() {
+  const noResult = document.querySelector(".no-results-container");
+  const searchInput = document.querySelector(".search-products");
+
   const categoryBtn = document.querySelector(".search-categories");
-  const productData = products();
   const allProducts = document.querySelector(".products");
 
   categoryBtn.addEventListener("change", () => {
     let html = "";
+
     productData.forEach((product, i) => {
+      noResult.classList.remove("show-result");
+      searchInput.value = "";
       if (
         categoryBtn.value === "All" ||
         categoryBtn.value === product.category
@@ -151,14 +155,30 @@ function searchProducts() {
         productName.includes(searchInput.value.toLowerCase()) ||
         productCategory.includes(searchInput.value.toLowerCase())
       ) {
-        noResult.classList.add("hide-result");
+        noResult.classList.remove("show-result");
         product.style.display = "block";
       } else {
         product.style.display = "none";
-        noResult.classList.remove("hide-result");
+        noResult.classList.add("show-result");
         resultQuerry.innerHTML = searchInput.value;
       }
     });
   });
 }
+
 searchProducts();
+
+//Cart Related Functions
+updateCartCount();
+
+allCartBtns.forEach((addBtn, index) => {
+  addBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(cartQuantity, index);
+    updateCartCount();
+    showAlert();
+    renderCart();
+    saveToStorage(cart);
+  });
+});
