@@ -1,3 +1,5 @@
+import { getProduct } from "./products.js";
+
 export const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function saveToStorage() {
@@ -24,3 +26,52 @@ export function addToCart(productId) {
 
   saveToStorage();
 }
+
+function renderCartItems() {
+  let cartItemsHTML = "";
+
+  cart.forEach((cartItem) => {
+    const productId = cartItem.productId;
+    let quantity = 0;
+
+    const matchingProduct = getProduct(productId);
+
+    if (matchingProduct.id === cartItem.productId) {
+      quantity = cartItem.quantity;
+    }
+
+    const html = `
+      <div class="cart-item">
+          <div class="image-name">
+            <img
+              src="${matchingProduct.images[0].img}"
+              alt=""
+              class="product-image"
+              />
+              <div class="name-price">
+              <h4>${matchingProduct.name}</h4>
+              <p class="price">${matchingProduct.price}</p>
+              <p class="quantity">Quantity: ${quantity}</p>
+              </div>
+              </div>
+              <div class="cart-item-handles">
+            <span class="update-quantity">Update</span>
+            <input type="text" class="quantity-input" />
+            <span class="save-quantity">Save</span>
+
+            <i class="fa-solid fa-trash"></i>
+            <p class="calculated-price">Rs 499</p>
+          </div>
+        </div>
+    `;
+
+    cartItemsHTML += html;
+  });
+  const cartItemsContainer = document.querySelector(".main-cart-items");
+
+  if (cartItemsContainer) {
+    cartItemsContainer.innerHTML = cartItemsHTML;
+  }
+}
+
+renderCartItems();

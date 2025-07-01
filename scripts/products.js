@@ -142,3 +142,16 @@ export function products() {
   ];
   return productData;
 }
+
+const productsData = products();
+
+export function getProduct(productId) {
+  let matchingProduct;
+  productsData.forEach((product) => {
+    if (productId === product.id) {
+      matchingProduct = product;
+    }
+  });
+
+  return matchingProduct;
+}

@@ -11,7 +11,7 @@
   align-items: start;
 }
 
-.cart-items {
+.main-cart-items {
   width: 70%;
 }
 
@@ -156,7 +156,7 @@ form button {
     flex-direction: column;
   }
 
-  .cart-items {
+  .main-cart-items {
     width: 100%;
   }
 
