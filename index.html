@@ -58,13 +58,16 @@
           items!
         </p>
         <div class="d-flex btn-container">
-          <button class="shop-btn">Shop Now</button>
-          <button class="learn-btn">Learn More</button>
+          <a href="#products">
+            <button class="shop-btn">Shop Now</button>
+            <button class="learn-btn">Learn More</button>
+          </a>
         </div>
       </div>
     </div>
 
     <!--Products-->
+    <!-- Out of Stock Alert (hidden by default) -->
 
     <div class="featured-products container">
       <div class="d-flex input-container">
@@ -78,7 +81,7 @@
         </select>
       </div>
       <!--All-Products-->
-      <div class="products"></div>
+      <div class="products" id="products"></div>
       <div class="no-results-container hide-result">
         <div class="no-results-icon"><i class="fas fa-search"></i></div>
         <h1 class="no-results-title">No Results Found</h1>
@@ -89,8 +92,11 @@
       </div>
     </div>
     <!--Custom-alert-->
-    <div class="cart-modal" id="cartModal">
-     
+    
+    <div class="cart-modal" id="cartModal"></div>
+
+    <div id="alert" class="stock-alert hide">
+      <p>This item is out of stock!</p>
     </div>
 
     <!--Footer-->

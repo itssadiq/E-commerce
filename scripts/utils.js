@@ -1,5 +1,4 @@
 import { cart, saveToStorage } from "./cart.js";
-
 function navScroll() {
   const navBar = document.querySelector(".navbar");
   if (window.scrollY > 100) {
@@ -13,11 +12,13 @@ function darkmode() {
   const darkmodeBtn = document.querySelector(".toggle-switch");
   darkmodeBtn.addEventListener("change", () => {
     let rootElement = document.documentElement;
+
     if (!rootElement.classList.contains("darkmode")) {
-      rootElement.classList.add("darkmode");
+      rootElement.classList.add(`darkmode`);
     } else {
-      rootElement.classList.remove("darkmode");
+      rootElement.classList.remove(`darkmode`);
     }
+    checkTheme();
   });
 }
 
@@ -79,7 +80,8 @@ export function renderCart() {
   <span class="cart-quantity">${data.quantity}</span>
   </div>
   </div>
-  </div>`;
+  </div>
+`;
   });
   if (cartContainer) {
     cartContainer.innerHTML = cartHtml;
@@ -122,6 +124,7 @@ export function showAlert() {
     modal.classList.remove("show");
   }, 1000);
 }
+
 
 window.addEventListener("scroll", navScroll);
 renderCart();

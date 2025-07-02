@@ -138,4 +138,61 @@ export const productData = [
       "USB rechargeable battery",
     ],
   },
+  {
+    id: 5,
+    images: [
+      {
+        img: "assets/products/camera-1.jpg",
+        img1: "assets/products/camera-2.jpg",
+        img2: "assets/products/camera-3.jpg",
+      },
+    ],
+    name: "Sony Alpha Series Mirrorless Camera",
+    rating: "assets/ratings/rating-45.png",
+    ratingCount: 4.5,
+    reviewCount: 10,
+    currency: "Rs ",
+    price: 4000,
+    oldPrice: 6000,
+    stock: "In Stock",
+    category: "Electronics",
+    description:
+      "Capture stunning photos and videos with this high-performance Sony mirrorless camera, perfect for professionals and enthusiasts alike.",
+    features: [
+      "Full-frame sensor for superior image quality",
+      "4K video recording",
+      "Fast hybrid autofocus system",
+      "Interchangeable lens mount",
+      "Wi-Fi and Bluetooth connectivity",
+    ],
+  },
+  {
+    id: 6,
+    images: [
+      {
+        img: "assets/products/vinta-bag-1.jpg",
+        img1: "assets/products/vinta-bag-2.jpg",
+        img2: "assets/products/vinta-bag-3.jpg",
+      },
+    ],
+    name: "Stylish Vinta Outdoor Backpack ",
+    rating: "assets/ratings/rating-35.png",
+    ratingCount: 3.5,
+    reviewCount: 28,
+    currency: "Rs ",
+    price: 2000,
+    oldPrice: 3000,
+
+    stock: "In Stock",
+    category: "Accessories",
+    description:
+      "Carry your gear in style with this durable and spacious backpack, perfect for travel, work, or everyday use.",
+    features: [
+      "Water-resistant fabric",
+      "Vintage design with leather accents",
+      "Padded laptop compartment",
+      "Multiple organizer pockets",
+      "Comfortable shoulder straps",
+    ],
+  },
 ];

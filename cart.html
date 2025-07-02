@@ -35,22 +35,97 @@
 
       <div class="cart-summary"></div>
     </div>
+    
 
     <!--TODO Check If More Fields Are Required And Connect With Supabase Talha-->
+    <!-- 
     <div class="form-wrapper">
       <h3>Delivery Details</h3>
       <form action="">
         <input type="text" placeholder="Full Name" required />
-        <input type="email" placeholder="Email Address" required />
-        <input type="text" placeholder="Phone Number" required />
+        <div class="form-group">
+          <input type="email" placeholder="Email Address" required />
+          <input type="text" placeholder="Phone Number" required />
+        </div>
         <input type="text" placeholder="Street Address" required />
         <input type="text" placeholder="City" required />
         <input type="text" placeholder="State" required />
         <input type="text" placeholder="ZIP Code" />
         <button type="submit">Place your order</button>
       </form>
-    </div>
+    </div> -->
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h3 class="form-title">Delivery Details</h3>
+        <p class="form-subtitle">
+          Enter your shipping information to proceed with your order
+        </p>
+      </div>
 
+      <form class="delivery-form">
+        <div class="form-row">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="John Doe" required />
+        </div>
+
+        <div class="form-group">
+          <div class="form-row">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="john@example.com"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="(123) 456-7890"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="address">Street Address</label>
+          <input type="text" id="address" placeholder="123 Main St" required />
+        </div>
+
+        <div class="form-group">
+          <div class="form-row">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="New York" required />
+          </div>
+          <div class="form-row">
+            <label for="state">State/Province</label>
+            <input type="text" id="state" placeholder="NY" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="zip">ZIP/Postal Code</label>
+          <input type="text" id="zip" placeholder="10001" />
+        </div>
+
+        <div class="form-row">
+          <label for="orderNotes">Order Notes</label>
+          <textarea
+            name="orderNotes"
+            id="orderNotes"
+            placeholder="Optional: delivery instructions, gate codes, etc."
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-lock"></i> Place Your Order
+          </button>
+        </div>
+      </form>
+    </div>
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">

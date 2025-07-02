@@ -1,7 +1,6 @@
 //Update Cart Quantity
 
 import { productData } from "./products.js";
-// import { updateCartCount } from "./utils.js";
 //FIXME Rewamp This Cart Array Sadiq
 
 //TODO Make Update And Delete Buttons Interactive Sadiq
@@ -27,8 +26,20 @@ renderPaymentSummary();
 
 //TODO Rewamp This Add To Cart Sadiq
 
+export function stockAlert() {
+  const alertStock = document.querySelector(".stock-alert");
+  productData.forEach((product) => {
+    if (product.stock === "Out of Stock") {
+      alertStock.classList.remove("hide");
+      return;
+    }
+  });
+}
+
 export function addToCart(cartQuantity, index) {
+  stockAlert();
   let product;
+
 
   if (
     window.location.pathname.endsWith("/index.html") ||
@@ -69,29 +80,36 @@ function renderCartSummary() {
   cart.forEach((cartItem) => {
     const html = `
       <div class="cart-page-item">
-      <div class="image-name">
-      <img
-      src="${cartItem.images[0].img}"
-      alt=""
-      class="product-image"
-      />
-            <div class="name-price">
-              <h4>${cartItem.name}</h4>
-              <p class="price">Rs ${cartItem.price}</p>
-              <p class="quantity">Quantity: ${cartItem.quantity}</p>
-            </div>
-          </div>
-          <div class="cart-item-handles">
-            <span class="update-quantity">Update</span>
-            <input type="text" class="quantity-input" />
-            <span class="save-quantity">Save</span>
-            
-            <i class="fa-solid fa-trash"></i>
-            <p class="calculated-price">Rs ${
-              cartItem.price * cartItem.quantity
-            }</p>
-            </div>
-            </div>
+  <div class="image-name">
+    <img src="${cartItem.images[0].img}" alt="${
+      cartItem.name
+    }" class="product-image" />
+    <div class="name-price">
+      <h4 class="product-name">${cartItem.name}</h4>
+      <div class="price-info">
+        <p class="price">Rs ${cartItem.price}</p>
+        <p class="quantity">Qty: ${cartItem.quantity}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cart-item-handles">
+    <div class="quantity-control">
+      <span class="update-quantity">Edit</span>
+      <input type="number" min="1" value="${
+        cartItem.quantity
+      }" class="quantity-input" />
+      <span class="save-quantity">Save</span>
+    </div>
+    
+    <div class="item-actions">
+      <button class="remove-item">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+      <p class="calculated-price">Rs ${cartItem.price * cartItem.quantity}</p>
+    </div>
+  </div>
+</div>
     `;
 
     cartItemsHTML += html;
@@ -114,7 +132,7 @@ function renderPaymentSummary() {
   });
 
   const html = `
-    <h3>Order Summary</h3>
+    <h3 class="order-header">Order Summary</h3>
         <div class="payment-summary">
           <div class="payment-summary-row">
           <div class="payment-summary-title">Items(${totalQuantity}):</div>

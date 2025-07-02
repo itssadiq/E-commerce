@@ -1,5 +1,5 @@
 import { productData } from "./products.js";
-import { addToCart, saveToStorage, cart } from "./cart.js";
+import { addToCart, saveToStorage, cart, stockAlert } from "./cart.js";
 import { updateCartCount, renderCart, showAlert } from "./utils.js";
 generateProducts();
 generateSingleProductPageDetails();
@@ -93,14 +93,14 @@ function showCategory() {
   categoryBtn.addEventListener("change", () => {
     let html = "";
 
-    productData.forEach((product, i) => {
+    productData.forEach((product, index) => {
       noResult.classList.remove("show-result");
       searchInput.value = "";
       if (
         categoryBtn.value === "All" ||
         categoryBtn.value === product.category
       ) {
-        html += `<div class="product-card" data-index = "${index}">
+        html += `<div class="product-card" data-index="${index}">
           <img class="product-img" src="${
             productData[index].images[0].img
           }" alt="" />
@@ -137,7 +137,6 @@ function showCategory() {
     });
     searchProducts();
     generateSingleProductPageDetails();
-    attachAddToCart();
   });
 }
 showCategory();
@@ -181,6 +180,7 @@ allCartBtns.forEach((addBtn, index) => {
     e.stopPropagation();
     addToCart(cartQuantity, index);
     updateCartCount();
+    stockAlert();
     showAlert();
     renderCart();
     saveToStorage(cart);
