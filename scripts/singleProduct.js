@@ -8,7 +8,6 @@ stockColor();
 
 updateCartCount();
 renderCart();
-let cartQuantity = 0;
 
 function generateProduct() {
   const html = `
@@ -82,7 +81,9 @@ function generateProduct() {
             <option value="5">5</option>
           </select>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart" data-index = "${
+          singleProduct.id
+        }">Add to Cart</button>
 
         <div class="status">
           <ul>
@@ -124,9 +125,13 @@ switchImage();
 const cartBtn = document.querySelector(".add-to-cart");
 
 cartBtn.addEventListener("click", () => {
-  addToCart(cartQuantity);
+  const productId = Number(cartBtn.dataset.index);
+
+  console.log(typeof productId);
+
+  addToCart(productId);
   updateCartCount();
   showAlert();
   renderCart();
-  saveToStorage(cart);  
+  saveToStorage(cart);
 });

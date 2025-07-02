@@ -1,7 +1,4 @@
-//Update Cart Quantity
-
-import { productData } from "./products.js";
-//FIXME Rewamp This Cart Array Sadiq
+import { productData, getProduct } from "./products.js";
 
 //TODO Make Update And Delete Buttons Interactive Sadiq
 export const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -16,7 +13,6 @@ const headingEl = document.querySelector(".cart-heading");
 if (headingEl) {
   headingEl.innerHTML = `Shopping Cart(${totalQuantity} items)`;
 }
-// updateCartCount();
 renderCartSummary();
 renderPaymentSummary();
 
@@ -24,51 +20,27 @@ renderPaymentSummary();
 
 //TODO Before Adding To Cart Check Stock Availablity And Show Relevant Alerts Talha
 
-//TODO Rewamp This Add To Cart Sadiq
+export function addToCart(productId) {
+  let matchingProduct;
 
-export function stockAlert() {
-  const alertStock = document.querySelector(".stock-alert");
-  productData.forEach((product) => {
-    if (product.stock === "Out of Stock") {
-      alertStock.classList.remove("hide");
-      return;
-    }
-  });
-}
-
-export function addToCart(cartQuantity, index) {
-  stockAlert();
-  let product;
-
-
-  if (
-    window.location.pathname.endsWith("/index.html") ||
-    window.location.pathname.endsWith("/")
-  ) {
-    product = productData[index];
-  } else if (window.location.pathname.endsWith("/singleProduct.html")) {
-    product = JSON.parse(localStorage.getItem("singleProduct"));
-  } else {
-    return;
-  }
-
-  let existingItem = undefined;
-
-  cart.forEach((item) => {
-    if (item.id === product.id) {
-      existingItem = item;
+  cart.forEach((cartItem) => {
+    if (cartItem.productId == productId) {
+      matchingProduct = cartItem;
     }
   });
 
-  if (existingItem) {
-    existingItem.quantity += 1;
+  if (matchingProduct) {
+    matchingProduct.quantity += 1;
   } else {
-    product.quantity = 1;
-    cart.push(product);
+    cart.push({
+      productId,
+      quantity: 1,
+    });
   }
 
   saveToStorage(cart);
 }
+
 //Save To Local Storage
 export function saveToStorage(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -78,38 +50,41 @@ function renderCartSummary() {
   let cartItemsHTML = "";
 
   cart.forEach((cartItem) => {
+    const productId = cartItem.productId;
+
+    const matchingProduct = getProduct(productId);
+
+    let quantity = 0;
+
+    if (productId == matchingProduct.id) {
+      quantity += cartItem.quantity;
+    }
+
     const html = `
       <div class="cart-page-item">
-  <div class="image-name">
-    <img src="${cartItem.images[0].img}" alt="${
-      cartItem.name
-    }" class="product-image" />
-    <div class="name-price">
-      <h4 class="product-name">${cartItem.name}</h4>
-      <div class="price-info">
-        <p class="price">Rs ${cartItem.price}</p>
-        <p class="quantity">Qty: ${cartItem.quantity}</p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="cart-item-handles">
-    <div class="quantity-control">
-      <span class="update-quantity">Edit</span>
-      <input type="number" min="1" value="${
-        cartItem.quantity
-      }" class="quantity-input" />
-      <span class="save-quantity">Save</span>
-    </div>
-    
-    <div class="item-actions">
-      <button class="remove-item">
-        <i class="fa-solid fa-trash"></i>
-      </button>
-      <p class="calculated-price">Rs ${cartItem.price * cartItem.quantity}</p>
-    </div>
-  </div>
-</div>
+      <div class="image-name">
+      <img
+      src="${matchingProduct.images[0].img}"
+      alt=""
+      class="product-image"
+      />
+            <div class="name-price">
+              <h4>${matchingProduct.name}</h4>
+              <p class="price">Rs ${matchingProduct.price}</p>
+              <p class="quantity">Quantity: ${quantity}</p>
+            </div>
+          </div>
+          <div class="cart-item-handles">
+            <span class="update-quantity">Update</span>
+            <input type="text" class="quantity-input" />
+            <span class="save-quantity">Save</span>
+            
+            <i class="fa-solid fa-trash"></i>
+            <p class="calculated-price">Rs ${
+              matchingProduct.price * quantity
+            }</p>
+            </div>
+            </div>
     `;
 
     cartItemsHTML += html;
@@ -127,15 +102,23 @@ function renderPaymentSummary() {
 
   let price = 0;
 
+  let quantity = 0;
   cart.forEach((cartItem) => {
-    price += cartItem.price * cartItem.quantity;
+    const productId = cartItem.productId;
+
+    const matchingProduct = getProduct(productId);
+
+    if (productId == matchingProduct.id) {
+      price += matchingProduct.price;
+      quantity += cartItem.quantity;
+    }
   });
 
   const html = `
     <h3 class="order-header">Order Summary</h3>
         <div class="payment-summary">
           <div class="payment-summary-row">
-          <div class="payment-summary-title">Items(${totalQuantity}):</div>
+          <div class="payment-summary-title">Items(${quantity}):</div>
           <div class="payment-summary-money">Rs ${price}</div>
           </div>
           
@@ -163,6 +146,3 @@ function renderPaymentSummary() {
     cartSummaryEl.innerHTML = html;
   }
 }
-
-// updateCartCount();
-// renderCart();

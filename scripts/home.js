@@ -1,5 +1,5 @@
 import { productData } from "./products.js";
-import { addToCart, saveToStorage, cart, stockAlert } from "./cart.js";
+import { addToCart, saveToStorage, cart } from "./cart.js";
 import { updateCartCount, renderCart, showAlert } from "./utils.js";
 generateProducts();
 generateSingleProductPageDetails();
@@ -178,9 +178,15 @@ allCartBtns.forEach((addBtn, index) => {
   addBtn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(cartQuantity, index);
+    const index = addBtn.dataset.index;
+
+    const product = productData[index];
+
+    const productId = product.id;
+
+    addToCart(productId);
     updateCartCount();
-    stockAlert();
+    // stockAlert();
     showAlert();
     renderCart();
     saveToStorage(cart);

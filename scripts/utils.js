@@ -1,4 +1,6 @@
 import { cart, saveToStorage } from "./cart.js";
+import { getProduct } from "./products.js";
+
 function navScroll() {
   const navBar = document.querySelector(".navbar");
   if (window.scrollY > 100) {
@@ -68,20 +70,31 @@ export function renderCart() {
   const cartContainer = document.querySelector(".cart-items");
 
   let cartHtml = "";
-  cart.forEach((data) => {
+  cart.forEach((cartItem) => {
+    const productId = cartItem.productId;
+
+    const matchingProduct = getProduct(productId);
+
+    let quantity = 0;
+
+    if (productId == matchingProduct.id) {
+      quantity += cartItem.quantity;
+    }
+
     cartHtml += `<div class="cart-item">
-  <img src="${data.images[0].img}" alt="" />
-  
-  <div>
-  <p class="cart-name">${data.name}</p>
-  <p class="cart-price">${data.currency + data.price}</p>
-  <div class="d-flex">
-  <span class="cart-delete">remove</span>
-  <span class="cart-quantity">${data.quantity}</span>
-  </div>
-  </div>
-  </div>
-`;
+    <img src="${matchingProduct.images[0].img}" alt="" />
+
+    <div>
+    <p class="cart-name">${matchingProduct.name}</p>
+    <p class="cart-price">${
+      matchingProduct.currency + matchingProduct.price
+    }</p>
+    <div class="d-flex">
+    <span class="cart-delete">remove</span>
+    <span class="cart-quantity">${quantity}</span>
+    </div>
+    </div>
+    </div>`;
   });
   if (cartContainer) {
     cartContainer.innerHTML = cartHtml;

@@ -196,3 +196,15 @@ export const productData = [
     ],
   },
 ];
+
+export function getProduct(productId) {
+  let matchingProduct;
+
+  productData.forEach((product) => {
+    if (product.id == productId) {
+      matchingProduct = product;
+    }
+  });
+
+  return matchingProduct;
+}
