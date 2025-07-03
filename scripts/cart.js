@@ -1,20 +1,28 @@
-import { productData, getProduct } from "./products.js";
+import { getProduct } from "./products.js";
+import { darkmode, navScroll, updateCartCount } from "./utils.js";
 
-//TODO Make Update And Delete Buttons Interactive Sadiq
 export const cart = JSON.parse(localStorage.getItem("cart")) || [];
-let totalQuantity = 0;
-
-cart.forEach((cartItem) => {
-  totalQuantity += cartItem.quantity;
-});
-
-const headingEl = document.querySelector(".cart-heading");
-
-if (headingEl) {
-  headingEl.innerHTML = `Shopping Cart(${totalQuantity} items)`;
-}
+darkmode();
+updateHeading();
 renderCartSummary();
 renderPaymentSummary();
+window.addEventListener("scroll", navScroll);
+
+//TODO Make Update And Delete Buttons Interactive Sadiq
+
+function updateHeading() {
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+
+  const headingEl = document.querySelector(".cart-heading");
+
+  if (headingEl) {
+    headingEl.innerHTML = `Shopping Cart(${totalQuantity} items)`;
+  }
+}
 
 //Add To Cart
 

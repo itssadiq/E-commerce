@@ -1,7 +1,7 @@
 import { cart, saveToStorage } from "./cart.js";
 import { getProduct } from "./products.js";
 
-function navScroll() {
+export function navScroll() {
   const navBar = document.querySelector(".navbar");
   if (window.scrollY > 100) {
     navBar.classList.add("scrolled");
@@ -10,7 +10,7 @@ function navScroll() {
   }
 }
 
-function darkmode() {
+export function darkmode() {
   const darkmodeBtn = document.querySelector(".toggle-switch");
   darkmodeBtn.addEventListener("change", () => {
     let rootElement = document.documentElement;
@@ -20,11 +20,10 @@ function darkmode() {
     } else {
       rootElement.classList.remove(`darkmode`);
     }
-    checkTheme();
   });
 }
 
-function cartToggle() {
+export function cartToggle() {
   const cartIcon = document.querySelector(".cart-icon-wrapper");
   const cartSidebar = document.querySelector(".cart-sidebar");
   const cartOverlay = document.querySelector(".cart-overlay");
@@ -137,9 +136,3 @@ export function showAlert() {
     modal.classList.remove("show");
   }, 1000);
 }
-
-
-window.addEventListener("scroll", navScroll);
-renderCart();
-cartToggle();
-darkmode();

@@ -1,10 +1,25 @@
 import { productData } from "./products.js";
 import { addToCart, saveToStorage, cart } from "./cart.js";
-import { updateCartCount, renderCart, showAlert } from "./utils.js";
+import {
+  updateCartCount,
+  renderCart,
+  showAlert,
+  navScroll,
+  cartToggle,
+} from "./utils.js";
+
 generateProducts();
 generateSingleProductPageDetails();
+renderCart();
+updateCartCount();
+createCategory();
+showCategory();
+searchProducts();
+cartToggle();
+window.addEventListener("scroll", navScroll);
 
-let cartQuantity = 0;
+// FIXME: Update category filters and attach addtocart event listener on category filter sadiq
+
 const allCartBtns = document.querySelectorAll(".add-to-cart");
 
 function generateProducts() {
@@ -81,8 +96,6 @@ function createCategory() {
   searchCategoryElement.innerHTML += categoryHtml;
 }
 
-createCategory();
-
 function showCategory() {
   const noResult = document.querySelector(".no-results-container");
   const searchInput = document.querySelector(".search-products");
@@ -139,7 +152,6 @@ function showCategory() {
     generateSingleProductPageDetails();
   });
 }
-showCategory();
 
 function searchProducts() {
   const noResult = document.querySelector(".no-results-container");
@@ -168,11 +180,6 @@ function searchProducts() {
 
   generateSingleProductPageDetails();
 }
-
-searchProducts();
-
-//Cart Related Functions
-updateCartCount();
 
 allCartBtns.forEach((addBtn, index) => {
   addBtn.addEventListener("click", (e) => {

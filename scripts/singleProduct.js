@@ -1,13 +1,22 @@
 import { addToCart, saveToStorage, cart } from "./cart.js";
-import { updateCartCount, renderCart, showAlert } from "./utils.js";
-const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
+import {
+  updateCartCount,
+  renderCart,
+  showAlert,
+  navScroll,
+  cartToggle,
+} from "./utils.js";
+
 //TODO Make Quantity Selector Interactive Sadiq
+
+const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
 generateProduct();
-
 stockColor();
-
 updateCartCount();
 renderCart();
+switchImage();
+cartToggle();
+window.addEventListener("scroll", navScroll);
 
 function generateProduct() {
   const html = `
@@ -120,14 +129,10 @@ function switchImage() {
   });
 }
 
-switchImage();
-
 const cartBtn = document.querySelector(".add-to-cart");
 
 cartBtn.addEventListener("click", () => {
   const productId = Number(cartBtn.dataset.index);
-
-  console.log(typeof productId);
 
   addToCart(productId);
   updateCartCount();
