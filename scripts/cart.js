@@ -28,7 +28,7 @@ function updateHeading() {
 
 //TODO Before Adding To Cart Check Stock Availablity And Show Relevant Alerts Talha
 
-export function addToCart(productId) {
+export function addToCart(productId, selectorValue) {
   let matchingProduct;
 
   cart.forEach((cartItem) => {
@@ -38,11 +38,11 @@ export function addToCart(productId) {
   });
 
   if (matchingProduct) {
-    matchingProduct.quantity += 1;
+    matchingProduct.quantity += selectorValue ? selectorValue : 1;
   } else {
     cart.push({
       productId,
-      quantity: 1,
+      quantity: selectorValue ? selectorValue : 1,
     });
   }
 

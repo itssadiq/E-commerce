@@ -9,6 +9,7 @@ import {
 } from "./utils.js";
 
 generateProducts();
+attachAddToCart();
 generateSingleProductPageDetails();
 renderCart();
 updateCartCount();
@@ -17,10 +18,6 @@ showCategory();
 searchProducts();
 cartToggle();
 window.addEventListener("scroll", navScroll);
-
-// FIXME: Update category filters and attach addtocart event listener on category filter sadiq
-
-const allCartBtns = document.querySelectorAll(".add-to-cart");
 
 function generateProducts() {
   let productHtml = "";
@@ -150,6 +147,7 @@ function showCategory() {
     });
     searchProducts();
     generateSingleProductPageDetails();
+    attachAddToCart();
   });
 }
 
@@ -181,21 +179,24 @@ function searchProducts() {
   generateSingleProductPageDetails();
 }
 
-allCartBtns.forEach((addBtn, index) => {
-  addBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const index = addBtn.dataset.index;
+function attachAddToCart() {
+  const allCartBtns = document.querySelectorAll(".add-to-cart");
+  allCartBtns.forEach((addBtn, index) => {
+    addBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const index = addBtn.dataset.index;
 
-    const product = productData[index];
+      const product = productData[index];
 
-    const productId = product.id;
+      const productId = product.id;
 
-    addToCart(productId);
-    updateCartCount();
-    // stockAlert();
-    showAlert();
-    renderCart();
-    saveToStorage(cart);
+      addToCart(productId);
+      updateCartCount();
+      // stockAlert();
+      showAlert();
+      renderCart();
+      saveToStorage(cart);
+    });
   });
-});
+}

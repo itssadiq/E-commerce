@@ -7,8 +7,6 @@ import {
   cartToggle,
 } from "./utils.js";
 
-//TODO Make Quantity Selector Interactive Sadiq
-
 const singleProduct = JSON.parse(localStorage.getItem("singleProduct"));
 generateProduct();
 stockColor();
@@ -82,7 +80,7 @@ function generateProduct() {
 
         <div class="quantity-selector">
           Quantity:
-          <select name="" id="quantity">
+          <select name="" id="quantity" class="selector-quantity">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -129,12 +127,17 @@ function switchImage() {
   });
 }
 
-const cartBtn = document.querySelector(".add-to-cart");
+const selectorEl = document.querySelector(".selector-quantity");
+let selectorValue;
+selectorEl.addEventListener("change", (e) => {
+  selectorValue = Number(selectorEl.value);
+});
 
+const cartBtn = document.querySelector(".add-to-cart");
 cartBtn.addEventListener("click", () => {
   const productId = Number(cartBtn.dataset.index);
 
-  addToCart(productId);
+  addToCart(productId, selectorValue);
   updateCartCount();
   showAlert();
   renderCart();
